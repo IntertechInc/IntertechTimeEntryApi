@@ -2,7 +2,7 @@ FORMAT: 1A
 HOST: http://www.google.com
 
 # TimeEntry api
-TimeEntry API is a *short texts saving* service similar to its physical paper presence on your table.
+TimeEntry API is a time entry service.
 
 # Group BookedTimeEntry
 TimeEntry related resources of the **TimeEntry API**
@@ -12,15 +12,19 @@ TimeEntry related resources of the **TimeEntry API**
 + Response 200 (application/json)
 
         [{
-          "id": 1, "title": "Jogging in park"
+          "id": 1, "userId": 1, "date": "2014-05-05T00:00:00", "hours": 8, "note": "I worked all day long on Wednesday.",
+          "allocation": { "client": "State of Minnesota DEED", "project": "MN Works", "task": "Development" }
         }, {
-          "id": 2, "title": "Pick-up posters from post-office"
+          "id": 2, "userId": 1, "date": "2014-05-05T00:00:00", "hours": 8, "note": "I worked all day long on Thursday.",
+          "allocation": { "client": "Agribank", "project": "Titaniun", "task": "Testing", id }
         }]
 
 ### Create a BookedTimeEntry [POST]
 + Request (application/json)
 
-        { "title": "Buy cheese and bread for breakfast." }
+        {
+          "userId": 1, "date": "2014-05-05T00:00:00", "hours": 8, "note": "I worked all day long on Friday.", "allocationId": 1
+        }
 
 + Response 201 (application/json)
 
