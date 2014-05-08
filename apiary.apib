@@ -21,10 +21,10 @@ TimeEntry related resources of the **TimeEntry API**
 + Response 200 (application/json)
 
         [{
-          "id": 1, "userId": 1, "date": "2014-05-05T00:00:00", "hours": 8, "note": "I worked all day long on Wednesday.",
+          "id": 1, "userId": "21EC2020-3AEA-4069-A2DD-08002B30309D", "date": "2014-05-05T00:00:00", "hours": 8, "note": "I worked all day long on Wednesday.",
           "allocation": { "allocationId": 2, "client": "State of Minnesota DEED", "project": "MN Works", "task": "Development" }
         }, {
-          "id": 2, "userId": 1, "date": "2014-05-05T00:00:00", "hours": 8, "note": "I worked all day long on Thursday.",
+          "id": 2, "userId": "31EC2020-3AEA-4069-A2DD-08002B30309D", "date": "2014-05-05T00:00:00", "hours": 8, "note": "I worked all day long on Thursday.",
           "allocation": { "allocationId": 2, "client": "Agribank", "project": "Titaniun", "task": "Testing" }
         }]
 
@@ -37,11 +37,11 @@ TimeEntry related resources of the **TimeEntry API**
 
     + Body
 
-            { "userId": 1, "date": "2014-05-07T00:00:00", "hours": 8, "note": "I worked all day long on Friday.", "allocationId": 1 }
+            { "userId": "21EC2020-3AEA-4069-A2DD-08002B30309D", "date": "2014-05-07T00:00:00", "hours": 8, "note": "I worked all day long on Friday.", "allocationId": 1 }
 
 + Response 201 (application/json)
 
-        { "id": 3, "userId": 1, "date": "2014-05-07T00:00:00", "hours": 8, "note": "I worked all day long on Friday.", "allocationId": 1 }
+        { "id": 3, "userId": "21EC2020-3AEA-4069-A2DD-08002B30309D", "date": "2014-05-07T00:00:00", "hours": 8, "note": "I worked all day long on Friday.", "allocationId": 1 }
 
 
 ## BookedTimeEntry [/bookedTimeEntries/{id}]
@@ -61,7 +61,7 @@ A single BookedTimeEntry object with all its details
 
     + Body
 
-            { "id": 1, "userId": 1, "date": "2014-05-05T00:00:00", "hours": 8, "note": "I worked all day long on Wednesday.", "allocation": { "client": "State of Minnesota DEED", "project": "MN Works", "task": "Development" }}
+            { "id": 1, "userId": "21EC2020-3AEA-4069-A2DD-08002B30309D", "date": "2014-05-05T00:00:00", "hours": 8, "note": "I worked all day long on Wednesday.", "allocation": { "client": "State of Minnesota DEED", "project": "MN Works", "task": "Development" }}
 
 ### Update a BookedTimeEntry [PUT]
 + Request (application/json)
@@ -72,7 +72,7 @@ A single BookedTimeEntry object with all its details
 
     + Body
 
-            { "userId": 1, "date": "2014-05-10T00:00:00", "hours": 8, "note": "I worked all day long on Saturday.", "allocationId": 1 }
+            { "userId": "21EC2020-3AEA-4069-A2DD-08002B30309D", "date": "2014-05-10T00:00:00", "hours": 8, "note": "I worked all day long on Saturday.", "allocationId": 1 }
 
 + Response 204
 
@@ -115,7 +115,7 @@ A single Allocation object with all its details
 
     + Body
 
-            { "id": 1, "userId": 1, "date": "2014-05-05T00:00:00", "hours": 8, "note": "I worked all day long on Wednesday.", "allocation": { "client": "State of Minnesota DEED", "project": "MN Works", "task": "Development" }}
+            { "id": 1, "userId": "21EC2020-3AEA-4069-A2DD-08002B30309D", "date": "2014-05-05T00:00:00", "hours": 8, "note": "I worked all day long on Wednesday.", "allocation": { "client": "State of Minnesota DEED", "project": "MN Works", "task": "Development" }}
 
 
 # Group User
@@ -132,16 +132,16 @@ User related resources of the **TimeEntry API**
 + Response 200 (application/json)
 
         [{
-          "id": 1, "userName": "ckent"
+          "id": "21EC2020-3AEA-4069-A2DD-08002B30309D", "userName": "ckent"
         }, {
-          "id": 2, "userName": "bwayne"
+          "id": "31EC2020-3AEA-4069-A2DD-08002B30309D", "userName": "bwayne"
         }]
 
 ## User [/users/{id}]
 A single User object with all its details
 
 + Parameters
-    + id (required, number, `1`) ... Numeric `id` of the User to perform action with. Has example value.
+    + id (required, guid, `21EC2020-3AEA-4069-A2DD-08002B30309D`) ... GUID `id` of the User to perform action with. Has example value.
 
 ### Retrieve a User [GET]
 + Request
@@ -154,7 +154,7 @@ A single User object with all its details
 
     + Body
 
-            {"id": 3, "userName": "pparker"}
+            {"id": "41EC2020-3AEA-4069-A2DD-08002B30309D", "userName": "pparker"}
 
 ## User [/users/{userName}]
 A single User object with all its details
@@ -173,4 +173,4 @@ A single User object with all its details
 
     + Body
 
-            {"id": 4, "userName": "srogers"}
+            {"id": "51EC2020-3AEA-4069-A2DD-08002B30309D", "userName": "srogers"}
