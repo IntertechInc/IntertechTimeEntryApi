@@ -9,6 +9,11 @@ TimeEntry related resources of the **TimeEntry API**
 
 ## BookedTimeEntry Collection [/bookedTimeEntries]
 ### List all BookedTimeEntry [GET]
++ Request
+
+    + Header
+            
+            Authorization: bearer <token>
 + Response 200 (application/json)
 
         [{
@@ -22,13 +27,17 @@ TimeEntry related resources of the **TimeEntry API**
 ### Create a BookedTimeEntry [POST]
 + Request (application/json)
 
-        {
-          "userId": 1, "date": "2014-05-05T00:00:00", "hours": 8, "note": "I worked all day long on Friday.", "allocationId": 1
-        }
+    + Header
+
+            Authorization: bearer <token>
+
+    + Body
+
+            { "userId": 1, "date": "2014-05-07T00:00:00", "hours": 8, "note": "I worked all day long on Friday.", "allocationId": 1 }
 
 + Response 201 (application/json)
 
-        { "id": 3, "title": "Buy cheese and bread for breakfast." }
+        { "id": 3, "userId": 1, "date": "2014-05-07T00:00:00", "hours": 8, "note": "I worked all day long on Friday.", "allocationId": 1 }
 
 ## BookedTimeEntry [/bookedTimeEntries/{id}]
 A single BookedTimeEntry object with all its details
