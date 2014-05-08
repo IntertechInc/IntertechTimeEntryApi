@@ -12,7 +12,7 @@ TimeEntry related resources of the **TimeEntry API**
     + startDate (optional, date, `2014-05-05T00:00:00`) ... Date `startDate` of the BookedTimeEntry. Has example value.
     + endDate (optional, date, `2014-05-05T00:00:00`) ... Date `endDate` of the BookedTimeEntry. Has example value.
 
-### List all BookedTimeEntry [GET]
+### List all BookedTimeEntries [GET]
 + Request
 
     + Header
@@ -22,10 +22,10 @@ TimeEntry related resources of the **TimeEntry API**
 
         [{
           "id": 1, "userId": 1, "date": "2014-05-05T00:00:00", "hours": 8, "note": "I worked all day long on Wednesday.",
-          "allocation": { "client": "State of Minnesota DEED", "project": "MN Works", "task": "Development" }
+          "allocation": { "allocationId": 2, "client": "State of Minnesota DEED", "project": "MN Works", "task": "Development" }
         }, {
           "id": 2, "userId": 1, "date": "2014-05-05T00:00:00", "hours": 8, "note": "I worked all day long on Thursday.",
-          "allocation": { "client": "Agribank", "project": "Titaniun", "task": "Testing", id }
+          "allocation": { "allocationId": 2, "client": "Agribank", "project": "Titaniun", "task": "Testing" }
         }]
 
 ### Create a BookedTimeEntry [POST]
@@ -78,3 +78,43 @@ A single BookedTimeEntry object with all its details
 
 ### Remove a BookedTimeEntry [DELETE]
 + Response 204
+
+# Group Allocation
+Allocation related resources of the **TimeEntry API**
+
+## Allocation Collection [/Allocations/]
+
+### List all Allocations [GET]
++ Request
+
+    + Header
+            
+            Authorization: bearer <token>
++ Response 200 (application/json)
+
+        [{
+          "id": 1, "client": "State of Minnesota DEED", "project": "MN Works", "task": "Development"
+        }, {
+          "id": 2, "client": "Agribank", "project": "Titaniun", "task": "Testing"
+        }]
+
+## Allocation [/Allocations/{id}]
+A single Allocation object with all its details
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the Allocation to perform action with. Has example value.
+
+### Retrieve a Allocation [GET]
++ Request
+
+    + Header
+            
+            Authorization: bearer <token>
+
++ Response 200 (application/json)
+
+    + Body
+
+            { "id": 1, "userId": 1, "date": "2014-05-05T00:00:00", "hours": 8, "note": "I worked all day long on Wednesday.", "allocation": { "client": "State of Minnesota DEED", "project": "MN Works", "task": "Development" }}
+
+
