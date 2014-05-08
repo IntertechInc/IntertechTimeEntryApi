@@ -39,6 +39,20 @@ TimeEntry related resources of the **TimeEntry API**
 
         { "id": 3, "userId": 1, "date": "2014-05-07T00:00:00", "hours": 8, "note": "I worked all day long on Friday.", "allocationId": 1 }
 
+
+### Update a BookedTimeEntry [PUT]
++ Request (application/json)
+
+    + Header
+
+            Authorization: bearer <token>
+
+    + Body
+
+            { "id": 4, "userId": 1, "date": "2014-05-10T00:00:00", "hours": 8, "note": "I worked all day long on Saturday.", "allocationId": 1 }
+
++ Response 204
+
 ## BookedTimeEntry [/bookedTimeEntries/{id}]
 A single BookedTimeEntry object with all its details
 
@@ -53,10 +67,6 @@ A single BookedTimeEntry object with all its details
             Authorization: bearer <token>
 
 + Response 200 (application/json)
-
-    + Header
-
-            X-My-Header: The Value
 
     + Body
 
