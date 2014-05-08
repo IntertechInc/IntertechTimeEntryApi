@@ -104,7 +104,7 @@ A single Allocation object with all its details
 + Parameters
     + id (required, number, `1`) ... Numeric `id` of the Allocation to perform action with. Has example value.
 
-### Retrieve a Allocation [GET]
+### Retrieve an Allocation [GET]
 + Request
 
     + Header
@@ -118,3 +118,59 @@ A single Allocation object with all its details
             { "id": 1, "userId": 1, "date": "2014-05-05T00:00:00", "hours": 8, "note": "I worked all day long on Wednesday.", "allocation": { "client": "State of Minnesota DEED", "project": "MN Works", "task": "Development" }}
 
 
+# Group User
+User related resources of the **TimeEntry API**
+
+## User Collection [/users/]
+
+### List all Users [GET]
++ Request
+
+    + Header
+            
+            Authorization: bearer <token>
++ Response 200 (application/json)
+
+        [{
+          "id": 1, "userName": "ckent"
+        }, {
+          "id": 2, "userName": "bwayne"
+        }]
+
+## User [/users/{id}]
+A single User object with all its details
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the User to perform action with. Has example value.
+
+### Retrieve a User [GET]
++ Request
+
+    + Header
+            
+            Authorization: bearer <token>
+
++ Response 200 (application/json)
+
+    + Body
+
+            {"id": 3, "userName": "pparker"}
+
+## User [/users/{userName}]
+A single User object with all its details
+
++ Parameters
+    + userName (required, string, `srogers`) ... String `userName` of the User to perform action with. Has example value.
+
+### Retrieve a User [GET]
++ Request
+
+    + Header
+            
+            Authorization: bearer <token>
+
++ Response 200 (application/json)
+
+    + Body
+
+            {"id": 4, "userName": "srogers"}
