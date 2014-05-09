@@ -83,7 +83,10 @@ A single BookedTimeEntry object with all its details
 # Group Allocation
 Allocation related resources of the **TimeEntry API**
 
-## Allocation Collection [/allocations/]
+## Allocation Collection [/allocations/{?userId}]
+
++ Parameters
+    + userId (required, string, `21EC2020-3AEA-4069-A2DD-08002B30309D`) ... String GUID `userId` of the BookedTimeEntry.  Has example value.
 
 ### List all Allocations [GET]
 + Request
