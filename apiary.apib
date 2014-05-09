@@ -52,19 +52,6 @@ A single BookedTimeEntry object with all its details
 + Parameters
     + id (required, number, `1`) ... Numeric `id` of the BookedTimeEntry to perform action with. Has example value.
 
-### Retrieve a BookedTimeEntry [GET]
-+ Request
-
-    + Header
-            
-            Authorization: bearer <token>
-
-+ Response 200 (application/json)
-
-    + Body
-
-            { "id": 1, "userId": "21EC2020-3AEA-4069-A2DD-08002B30309D", "date": "2014-05-05T00:00:00", "hours": 8, "note": "I worked all day long on Wednesday.", "allocation": { "client": "State of Minnesota DEED", "project": "MN Works", "task": "Development" }}
-
 ### Update a BookedTimeEntry [PUT]
 + Request (application/json)
 
