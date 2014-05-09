@@ -7,13 +7,14 @@ TimeEntry API is a time entry service.
 # Group BookedTimeEntry
 TimeEntry related resources of the **TimeEntry API**
 
-## BookedTimeEntry Collection [/bookedTimeEntries/{?userId,startDate,endDate}]
+## BookedTimeEntry Collection [/bookedTimeEntries{?userId,startDate,endDate}]
+
+### List all BookedTimeEntries [GET]
 + Parameters
     + userId (required, string, `21EC2020-3AEA-4069-A2DD-08002B30309D`) ... String GUID `userId` of the BookedTimeEntry.  Has example value.
     + startDate (optional, date, `2014-05-05T00:00:00`) ... Date `startDate` of the BookedTimeEntry. Has example value.
     + endDate (optional, date, `2014-05-05T00:00:00`) ... Date `endDate` of the BookedTimeEntry. Has example value.
 
-### List all BookedTimeEntries [GET]
 + Request
 
     + Header
@@ -83,12 +84,12 @@ A single BookedTimeEntry object with all its details
 # Group Allocation
 Allocation related resources of the **TimeEntry API**
 
-## Allocation Collection [/allocations/{?userId}]
+## Allocation Collection [/allocations{?userId}]
 
+### List all Allocations [GET]
 + Parameters
     + userId (required, string, `21EC2020-3AEA-4069-A2DD-08002B30309D`) ... String GUID `userId` of the BookedTimeEntry.  Has example value.
 
-### List all Allocations [GET]
 + Request
 
     + Header
@@ -125,7 +126,7 @@ A single Allocation object with all its details
 # Group User
 User related resources of the **TimeEntry API**
 
-## User Collection [/users/]
+## User Collection [/users]
 
 ### List all Users [GET]
 + Request
