@@ -6,13 +6,14 @@ TimeEntry API is a time entry service.
 # Group BookedTimeEntry
 TimeEntry related resources of the **TimeEntry API**
 
-## BookedTimeEntry List [/booked-time-entries{?startDate,endDate}]
+## BookedTimeEntry List [/booked-time-entries{?start_date,end_date}]
 
 ### List all BookedTimeEntries [GET]
 + Parameters
-    + startDate (optional, date, `2014-05-05T00:00:00`) ... Date `startDate` of the BookedTimeEntry. Has example value.
-    + endDate (optional, date, `2014-05-05T00:00:00`) ... Date `endDate` of the BookedTimeEntry. Has example value.
 
+    + start_date (optional, date, `2014-05-05T00:00:00Z`) ... Date `start_date` of the BookedTimeEntry. Has example value.
+    + end_date (optional, date, `2014-05-05T00:00:00Z`) ... Date `end_date` of the BookedTimeEntry. Has example value.
+    
 + Request
 
     + Header
