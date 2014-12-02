@@ -6,11 +6,10 @@ TimeEntry API is a time entry service.
 # Group BookedTimeEntry
 TimeEntry related resources of the **TimeEntry API**
 
-## BookedTimeEntry Collection [/bookedTimeEntries{?userId,startDate,endDate}]
+## BookedTimeEntry List [/booked-time-entries{?startDate,endDate}]
 
 ### List all BookedTimeEntries [GET]
 + Parameters
-    + userId (required, string, `21EC2020-3AEA-4069-A2DD-08002B30309D`) ... String GUID `userId` of the BookedTimeEntry.  Has example value.
     + startDate (optional, date, `2014-05-05T00:00:00`) ... Date `startDate` of the BookedTimeEntry. Has example value.
     + endDate (optional, date, `2014-05-05T00:00:00`) ... Date `endDate` of the BookedTimeEntry. Has example value.
 
@@ -18,34 +17,51 @@ TimeEntry related resources of the **TimeEntry API**
 
     + Header
             
-            Authorization: bearer <token>
+            Authorization: Bearer <token>
+            Accept: vnd.intertech.v1+json
+
 + Response 200 (application/json)
 
-        [{
-          "id": 1, "userId": "21EC2020-3AEA-4069-A2DD-08002B30309D", "date": "2014-05-05T00:00:00", "hours": 8, "note": "I worked all day long on Wednesday.", "readonly": false,
-          "allocation": { "id": 2, "client": "State of Minnesota DEED", "project": "MN Works", "task": "Development" }
-        }, {
-          "id": 2, "userId": "31EC2020-3AEA-4069-A2DD-08002B30309D", "date": "2014-05-05T00:00:00", "hours": 8, "note": "I worked all day long on Thursday.", "readonly": true,
-          "allocation": { "id": 2, "client": "Agribank", "project": "Titaniun", "task": "Testing" }
-        }]
+    + Header
+        
+            Request-Id: <UUID>
+        
+    + Body
+
+            [{
+              "id": 1, "user_id": "21EC2020-3AEA-4069-A2DD-08002B30309D", "date": "2014-05-10T00:00:00Z", "hours": 8, "note": "I worked all day long on Wednesday.", "read_only": false,
+              "allocation": { "id": 2, "client": "State of Minnesota DEED", "project": "MN Works", "task": "Development" }
+            }, {
+              "id": 2, "user_id": "31EC2020-3AEA-4069-A2DD-08002B30309D", "date": "2014-05-10T00:00:00Z", "hours": 8, "note": "I worked all day long on Thursday.", "read_only": true,
+              "allocation": { "id": 2, "client": "Agribank", "project": "Titaniun", "task": "Testing" }
+            }]
+
+## BookedTimeEntry [/booked-time-entries]
 
 ### Create a BookedTimeEntry [POST]
 + Request (application/json)
 
     + Header
 
-            Authorization: bearer <token>
+            Authorization: Bearer <token>
+            Accept: vnd.intertech.v1+json
 
     + Body
 
-            { "userId": "21EC2020-3AEA-4069-A2DD-08002B30309D", "date": "2014-05-07T00:00:00", "hours": 8, "note": "I worked all day long on Friday.", "allocationId": 1 }
+            { "user_id": "21EC2020-3AEA-4069-A2DD-08002B30309D", "date": "2014-05-07T00:00:00", "hours": 8, "note": "I worked all day long on Friday.", "allocation": { "id": 1 } }
 
 + Response 201 (application/json)
+    
+    + Header
+        
+            Request-Id: <UUID>
+    
+    + Body
 
-        { "id": 3, "userId": "21EC2020-3AEA-4069-A2DD-08002B30309D", "date": "2014-05-07T00:00:00", "hours": 8, "note": "I worked all day long on Friday.", "allocationId": 1 }
+            { "id": 3, "user_id": "21EC2020-3AEA-4069-A2DD-08002B30309D", "date": "2014-05-07T00:00:00", "hours": 8, "note": "I worked all day long on Friday.", "allocation": { "id": 1 } }
 
 
-## BookedTimeEntry [/bookedTimeEntries/{id}]
+## BookedTimeEntry [/booked-time-entries/{id}]
 A single BookedTimeEntry object with all its details
 
 + Parameters
@@ -56,38 +72,61 @@ A single BookedTimeEntry object with all its details
 
     + Header
 
-            Authorization: bearer <token>
+            Authorization: Bearer <token>
+            Accept: vnd.intertech.v1+json
 
     + Body
 
-            { "userId": "21EC2020-3AEA-4069-A2DD-08002B30309D", "date": "2014-05-10T00:00:00", "hours": 8, "note": "I worked all day long on Saturday.", "allocationId": 1 }
+            { "id": 1, "user_id": "21EC2020-3AEA-4069-A2DD-08002B30309D", "date": "2014-05-10T00:00:00Z", "hours": 8, "note": "I worked all day long on Saturday.", "allocation": { "id": 1 } }
 
-+ Response 204
++ Response 200
+
+    + Header
+        
+            Request-Id: <UUID>
+            
+    + Body
+
+            { "id": 3, "user_id": "21EC2020-3AEA-4069-A2DD-08002B30309D", "date": "2014-05-10T00:00:00Z", "hours": 8, "note": "I worked all day long on Friday.", "allocation": { "id": 1 } }            
 
 ### Remove a BookedTimeEntry [DELETE]
-+ Response 204
++ Response 200
+
+    + Header
+        
+            Request-Id: <UUID>
+            
+    + Body
+
+            { "id": 3, "user_id": "21EC2020-3AEA-4069-A2DD-08002B30309D", "date": "2014-05-10T00:00:00Z", "hours": 8, "note": "I worked all day long on Friday.", "allocation": { "id": 1 } }            
 
 # Group Allocation
 Allocation related resources of the **TimeEntry API**
 
-## Allocation Collection [/allocations{?userId}]
+## Allocation Collection [/allocations]
 
 ### List all Allocations [GET]
-+ Parameters
-    + userId (required, string, `21EC2020-3AEA-4069-A2DD-08002B30309D`) ... String GUID `userId` of the BookedTimeEntry.  Has example value.
 
 + Request
 
     + Header
             
-            Authorization: bearer <token>
+            Authorization: Bearer <token>
+            Accept: vnd.intertech.v1+json
+            
 + Response 200 (application/json)
-
-        [{
-          "id": 1, "client": "State of Minnesota DEED", "project": "MN Works", "task": "Development"
-        }, {
-          "id": 2, "client": "Agribank", "project": "Titaniun", "task": "Testing"
-        }]
+    
+    + Header
+        
+            Request-Id: <UUID>
+    
+    + Body
+    
+            [{
+              "id": 1, "client": "State of Minnesota DEED", "project": "MN Works", "task": "Development"
+            }, {
+              "id": 2, "client": "Agribank", "project": "Titaniun", "task": "Testing"
+            }]
 
 ## Allocation [/allocations/{id}]
 A single Allocation object with all its details
@@ -100,68 +139,14 @@ A single Allocation object with all its details
 
     + Header
             
-            Authorization: bearer <token>
+            Authorization: Bearer <token>
+            Accept: vnd.intertech.v1+json
 
 + Response 200 (application/json)
-
+    + Header
+        
+            Request-Id: <UUID>
+    
     + Body
 
             { "id": 1, "client": "State of Minnesota DEED", "project": "MN Works", "task": "Development" }
-
-
-# Group User
-User related resources of the **TimeEntry API**
-
-## User Collection [/users]
-
-### List all Users [GET]
-+ Request
-
-    + Header
-            
-            Authorization: bearer <token>
-+ Response 200 (application/json)
-
-        [{
-          "id": "21EC2020-3AEA-4069-A2DD-08002B30309D", "userName": "ckent"
-        }, {
-          "id": "31EC2020-3AEA-4069-A2DD-08002B30309D", "userName": "bwayne"
-        }]
-
-## User [/users/{id}]
-A single User object with all its details
-
-+ Parameters
-    + id (required, guid, `21EC2020-3AEA-4069-A2DD-08002B30309D`) ... GUID `id` of the User to perform action with. Has example value.
-
-### Retrieve a User [GET]
-+ Request
-
-    + Header
-            
-            Authorization: bearer <token>
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {"id": "41EC2020-3AEA-4069-A2DD-08002B30309D", "userName": "pparker"}
-
-## User [/users{?userName}]
-A single User object with all its details
-
-+ Parameters
-    + userName (required, string, `srogers`) ... String `userName` of the User to perform action with. Has example value.
-
-### Retrieve a User [GET]
-+ Request
-
-    + Header
-            
-            Authorization: bearer <token>
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {"id": "51EC2020-3AEA-4069-A2DD-08002B30309D", "userName": "srogers"}
