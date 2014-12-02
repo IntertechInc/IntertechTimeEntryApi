@@ -20,12 +20,14 @@ TimeEntry related resources of the **TimeEntry API**
             
             Authorization: Bearer <token>
             Accept: vnd.intertech.v1+json
+            If-None-Match: W/"11-2535484157"
 
 + Response 200 (application/json)
 
     + Header
         
             Request-Id: <UUID>
+            ETag: W/"11-2535484157" 
         
     + Body
 
@@ -114,12 +116,14 @@ Allocation related resources of the **TimeEntry API**
             
             Authorization: Bearer <token>
             Accept: vnd.intertech.v1+json
+            If-None-Match: W/"11-2535484157"
             
 + Response 200 (application/json)
     
     + Header
         
             Request-Id: <UUID>
+            ETag: W/"11-2535484157" 
     
     + Body
     
@@ -142,11 +146,14 @@ A single Allocation object with all its details
             
             Authorization: Bearer <token>
             Accept: vnd.intertech.v1+json
+            If-None-Match: W/"11-2535484157"
+
 
 + Response 200 (application/json)
     + Header
         
             Request-Id: <UUID>
+            ETag: W/"11-2535484157" 
     
     + Body
 
