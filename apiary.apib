@@ -186,3 +186,27 @@ Authentication Endpoint to get a bearer token for use in other api endpoints.
     + Body
             
             { "access_token": "--bearer token--", "token_type": "bearer", "name": "Luke Vader", "email": "a@b.c" }
+            
+## Retrieve a token via Password [POST]
+
++ Request
+
+    + Header
+        
+            Accept: vnd.intertech.v1+json
+            Content-Type: application/json
+    
+    + Body
+    
+            { "grant_type": "password", "username": "Luke", "password": "theforce" }
+            
++ Response 200 (application/json)
+
+    + Header
+    
+            Request-Id: <UUID>
+    
+    + Body
+            
+            { "access_token": "--bearer token--", "token_type": "bearer", "name": "Luke Vader", "email": "a@b.c" }
+            
