@@ -32,10 +32,10 @@ TimeEntry related resources of the **TimeEntry API**
     + Body
 
             [{
-              "id": 1, "user": { "id": "31EC2020-3AEA-4069-A2DD-08002B30309D" }, "date": "2014-05-10T00:00:00Z", "hours": 8, "note": "I worked all day long on Wednesday.", "read_only": false,
+              "id": 1, "user": { "id": "31EC2020-3AEA-4069-A2DD-08002B30309D" }, "date": "2014-05-10", "hours": 8, "note": "I worked all day long on Wednesday.", "read_only": false,
               "allocation": { "id": 2, "client": "State of Minnesota DEED", "project": "MN Works", "task": "Development" }
             }, {
-              "id": 2, "user": { "id": "31EC2020-3AEA-4069-A2DD-08002B30309D" }, "date": "2014-05-10T00:00:00Z", "hours": 8, "note": "I worked all day long on Thursday.", "read_only": true,
+              "id": 2, "user": { "id": "31EC2020-3AEA-4069-A2DD-08002B30309D" }, "date": "2014-05-10", "hours": 8, "note": "I worked all day long on Thursday.", "read_only": true,
               "allocation": { "id": 2, "client": "Agribank", "project": "Titaniun", "task": "Testing" }
             }]
 
@@ -51,7 +51,7 @@ TimeEntry related resources of the **TimeEntry API**
 
     + Body
 
-            { "user": { "id": "31EC2020-3AEA-4069-A2DD-08002B30309D" }, "date": "2014-05-07T00:00:00", "hours": 8, "note": "I worked all day long on Friday.", "allocation": { "id": 1 } }
+            { "user": { "id": "31EC2020-3AEA-4069-A2DD-08002B30309D" }, "date": "2014-05-07", "hours": 8, "note": "I worked all day long on Friday.", "allocation": { "id": 1 } }
 
 + Response 201 (application/json)
     
@@ -61,7 +61,7 @@ TimeEntry related resources of the **TimeEntry API**
     
     + Body
 
-            { "id": 3, "user": { "id": "31EC2020-3AEA-4069-A2DD-08002B30309D" }, "date": "2014-05-07T00:00:00", "hours": 8, "note": "I worked all day long on Friday.", "allocation": { "id": 1 } }
+            { "id": 3, "user": { "id": "31EC2020-3AEA-4069-A2DD-08002B30309D" }, "date": "2014-05-07", "hours": 8, "note": "I worked all day long on Friday.", "allocation": { "id": 1 } }
 
 
 ## BookedTimeEntry [/booked-time-entries/{id}]
@@ -80,7 +80,7 @@ A single BookedTimeEntry object with all its details
 
     + Body
 
-            { "id": 1, "user": { "id": "31EC2020-3AEA-4069-A2DD-08002B30309D" }, "date": "2014-05-10T00:00:00Z", "hours": 8, "note": "I worked all day long on Saturday.", "allocation": { "id": 1 } }
+            { "id": 1, "user": { "id": "31EC2020-3AEA-4069-A2DD-08002B30309D" }, "date": "2014-05-10", "hours": 8, "note": "I worked all day long on Saturday.", "allocation": { "id": 1 } }
 
 + Response 200
 
@@ -90,7 +90,7 @@ A single BookedTimeEntry object with all its details
             
     + Body
 
-            { "id": 3, "user": { "id": "31EC2020-3AEA-4069-A2DD-08002B30309D" }, "date": "2014-05-10T00:00:00Z", "hours": 8, "note": "I worked all day long on Friday.", "allocation": { "id": 1 } }            
+            { "id": 3, "user": { "id": "31EC2020-3AEA-4069-A2DD-08002B30309D" }, "date": "2014-05-10", "hours": 8, "note": "I worked all day long on Friday.", "allocation": { "id": 1 } }            
 
 ### Remove a BookedTimeEntry [DELETE]
 + Response 200
@@ -101,7 +101,7 @@ A single BookedTimeEntry object with all its details
             
     + Body
 
-            { "id": 3, "user": { "id": "31EC2020-3AEA-4069-A2DD-08002B30309D" }, "date": "2014-05-10T00:00:00Z", "hours": 8, "note": "I worked all day long on Friday.", "allocation": { "id": 1 } }            
+            { "id": 3, "user": { "id": "31EC2020-3AEA-4069-A2DD-08002B30309D" }, "date": "2014-05-10", "hours": 8, "note": "I worked all day long on Friday.", "allocation": { "id": 1 } }            
 
 # Group Allocation
 Allocation related resources of the **TimeEntry API**
