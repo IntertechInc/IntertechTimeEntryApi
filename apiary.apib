@@ -11,8 +11,8 @@ TimeEntry related resources of the **TimeEntry API**
 ### List all BookedTimeEntries [GET]
 + Parameters
 
-    + start_date (optional, date, `2014-05-05T00:00:00Z`) ... Date `start_date` of the BookedTimeEntry. Has example value.
-    + end_date (optional, date, `2014-05-05T00:00:00Z`) ... Date `end_date` of the BookedTimeEntry. Has example value.
+    + start_date (optional, date, `2014-05-05`) ... Date `start_date` of the BookedTimeEntry. Has example value.
+    + end_date (optional, date, `2014-05-05`) ... Date `end_date` of the BookedTimeEntry. Has example value.
     
 + Request
 
@@ -44,8 +44,8 @@ TimeEntry related resources of the **TimeEntry API**
 ### List all your BookedTimeEntries [GET]
 + Parameters
 
-    + start_date (optional, date, `2014-05-05T00:00:00Z`) ... Date `start_date` of the BookedTimeEntry. Has example value.
-    + end_date (optional, date, `2014-05-05T00:00:00Z`) ... Date `end_date` of the BookedTimeEntry. Has example value.
+    + start_date (optional, date, `2014-05-05`) ... Date `start_date` of the BookedTimeEntry. Has example value.
+    + end_date (optional, date, `2014-05-05`) ... Date `end_date` of the BookedTimeEntry. Has example value.
     
 + Request
 
@@ -95,6 +95,32 @@ TimeEntry related resources of the **TimeEntry API**
     + Body
 
             { "id": 3, "user": { "id": "31EC2020-3AEA-4069-A2DD-08002B30309D" }, "date": "2014-05-07", "hours": 8, "note": "I worked all day long on Friday.", "allocation": { "id": 1 } }
+
+## BookedTimeEntry [/me/booked-time-entries]
+
+### Create a BookedTimeEntry for yourself [POST]
++ Request (application/json)
+
+    + Header
+
+            Authorization: Bearer <token>
+            Accept: vnd.intertech.v1+json
+
+    + Body
+
+            { "date": "2014-05-07", "hours": 8, "note": "I worked all day long on Friday.", "allocation": { "id": 1 } }
+
++ Response 201 (application/json)
+    
+    + Header
+        
+            Request-Id: <UUID>
+    
+    + Body
+
+            { "id": 3, "user": { "id": "31EC2020-3AEA-4069-A2DD-08002B30309D" }, "date": "2014-05-07", "hours": 8, "note": "I worked all day long on Friday.", "allocation": { "id": 1 } }
+
+
 
 
 ## BookedTimeEntry [/booked-time-entries/{id}]
