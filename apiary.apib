@@ -123,13 +123,13 @@ TimeEntry related resources of the **TimeEntry API**
 
 
 
-## BookedTimeEntry [/booked-time-entries/{id}]
+## BookedTimeEntry [/me/booked-time-entries/{id}]
 A single BookedTimeEntry object with all its details
 
 + Parameters
     + id (required, number, `1`) ... Numeric `id` of the BookedTimeEntry to perform action with. Has example value.
 
-### Update a BookedTimeEntry [PUT]
+### Update a BookedTimeEntry for Yourself [PUT]
 + Request (application/json)
 
     + Header
@@ -151,7 +151,7 @@ A single BookedTimeEntry object with all its details
 
             { "id": 3, "user": { "id": "31EC2020-3AEA-4069-A2DD-08002B30309D" }, "date": "2014-05-10", "hours": 8, "note": "I worked all day long on Friday.", "allocation": { "id": 1 } }            
 
-### Remove a BookedTimeEntry [DELETE]
+### Remove a BookedTimeEntry for Yourself [DELETE]
 + Response 200
 
     + Header
@@ -187,9 +187,9 @@ Allocation related resources of the **TimeEntry API**
     + Body
     
             [{
-              "id": 1, "client": "State of Minnesota DEED", "project": "MN Works", "task": "Development"
+              "id": 1, "client": "Magic Muffin Factory", "project": "MN Works", "task": "Development", "active": true, "billable": true, "isIntertech": false
             }, {
-              "id": 2, "client": "Agribank", "project": "Titaniun", "task": "Testing"
+              "id": 2, "client": "Acme Inc", "project": "Titaniun", "task": "Testing", "active": false, "billable": true, "isIntertech": false
             }]
 
 ## Your Allocation Collection [/me/allocations]
@@ -214,9 +214,9 @@ Allocation related resources of the **TimeEntry API**
     + Body
     
             [{
-              "id": 1, "client": "State of Minnesota DEED", "project": "MN Works", "task": "Development"
+              "id": 1, "client": "State of Minnesota DEED", "project": "MN Works", "task": "Development", "active": true
             }, {
-              "id": 2, "client": "Agribank", "project": "Titaniun", "task": "Testing"
+              "id": 2, "client": "Agribank", "project": "Titaniun", "task": "Testing", "active": false
             }]
 
 ## Allocation [/allocations/{id}]
@@ -318,4 +318,125 @@ Authentication Endpoint to get a bearer token for use in other api endpoints.
     + Body
             
             { "access_token": "--bearer token--", "token_type": "bearer", "name": "Luke Vader", "email": "a@b.c" }
+    
+# Group Notifications    
             
+## Your Notifications [/me/notifications]
+
+## List your device registrations [GET]
+
+List all of your device registrations, deviceToken means it is apple, gcmRegistrationId indicates google
+
++ Request
+
+    + Header
+        
+            Accept: vnd.intertech.v1+json
+            Content-Type: application/json
+            
++ Response 200 (application/json)
+
+    + Header
+    
+            Request-Id: <UUID>
+
+    + Body
+    
+            [{"id":"123","deviceToken":"4456588DEAR", "gcmRegistrationId": "123456","expires":"2015-06-10T03:54:34.282Z"}]
+          
+## Your Apple Devices [/me/notifications/apns]
+
+## Register new Apple device [POST]          
+
+Registers a new APNS device
+
++ Request
+
+    + Header
+        
+            Accept: vnd.intertech.v1+json
+            Content-Type: application/json
+
+    + Body
+    
+            {"deviceToken": "4456588DEAR"}
+        
++ Response 201 (application/json)
+
+    + Header
+    
+            Request-Id: <UUID>
+
+    + Body
+    
+            {"id":"123","deviceToken":"4456588DEAR","expires":"2015-06-10T03:54:34.282Z"}
+
+## Your Google Devices [/me/notifications/gcm]
+            
+## Register new Google device [POST]          
+
+Registers a new GCM device
+
++ Request
+
+    + Header
+        
+            Accept: vnd.intertech.v1+json
+            Content-Type: application/json
+
+    + Body
+    
+            {"gcmRegistrationId": "4456588DEAR"}
+        
++ Response 201 (application/json)
+
+    + Header
+    
+            Request-Id: <UUID>
+
+    + Body
+    
+            {"id":"123","gcmRegistrationId":"4456588DEAR","expires":"2015-06-10T03:54:34.282Z"}            
+
+## Device Registration [/me/notifications/{id}]
+            
+## Delete device [DELETE]
+
+Delets a registered device
+
++ Request
+
+    + Header
+        
+            Accept: vnd.intertech.v1+json
+            Content-Type: application/json
+            
++ Response 204 (application/json)
+
+    + Header
+    
+            Request-Id: <UUID>
+            
+## Test Notification [/me/notifications/actions/send]
+
+## Send Test Notification [POST]
+
+Sends a test notification to all of your registered devices
+
++ Request
+
+    + Header
+        
+            Accept: vnd.intertech.v1+json
+            Content-Type: application/json
+            
+    + Body
+    
+            {"message": "test notification","count": 100}
+            
+            
++ Response 204 (application/json)
+            
+    + Header
+    
+            Request-Id: <UUID>
